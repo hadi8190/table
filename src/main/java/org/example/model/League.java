@@ -2,6 +2,15 @@ package org.example.model;
 
 public class League {
     private int id;
+
+    @Override
+    public String toString() {
+        return "League{" +
+                "id=" + id +
+                ", leaguename='" + leaguename + '\'' +
+                '}';
+    }
+
     private String leaguename;
 
     public League(int id, String leaguename) {

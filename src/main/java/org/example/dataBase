@@ -1,0 +1,39 @@
+create table if not exists public.league
+(
+    id         integer generated always as identity
+        primary key,
+    leaguename varchar(250)
+);
+
+alter table public.league
+    owner to postgres;
+
+create table if not exists public.team
+(
+    id        integer generated always as identity
+        primary key,
+    teamname  varchar(250),
+    point     integer default 0,
+    wins      integer default 0,
+    faild     integer default 0,
+    equal     integer default 0,
+    league_id integer
+        references public.league
+);
+
+alter table public.team
+    owner to postgres;
+
+create table if not exists public.match
+(
+    id            integer generated always as identity
+        primary key,
+    hometeamgoals integer,
+    teamid        integer,
+    awayteamgoals integer,
+    team_id       integer
+        references public.team
+);
+
+alter table public.match
+    owner to postgres;

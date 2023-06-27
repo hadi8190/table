@@ -16,20 +16,11 @@ public class LeagueService {
     public void addLeague(String leagueName){
         LeagueService.createLeague(leagueName);
     }
-    public static void showTable(Team team){
-        ArrayList<Team> teams = TeamRepo.table(team);
-        for (int i = 1; i <=teams.size(); i++) {
-            TeamRepo.sortedTeam(team);
+    public static void showTable(int leagueId ){
+
+        ArrayList<Team> teams = TeamRepo.table(leagueId);
+
+        for (int i = 0; i <teams.size() ; i++) {
+            System.out.println(teams.get(i));
         }
-    }
-    public static void showtable(int leagueid){
-        Team team1 = new Team(leagueid);
-        showTable(team1);
-    }
-////    if (team != null){
-//        int teamId = team.getId();
-//        Team team1 = new Team(teamId);
-//        LeagueService.showTable(team1);
-//
-//    }
-}
+}}

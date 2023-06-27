@@ -9,6 +9,7 @@ import org.example.repository.TeamRepo;
 import java.util.ArrayList;
 
 public class TeamService {
+    public int pointToAdd = 3;
     private static Team chosenTeam = null;
     public static void createTeam(String teamname, League league) {
         Team team1 = new Team(teamname, league);
@@ -23,20 +24,24 @@ public class TeamService {
         TeamRepo.deleteTeam(team);
     }
 
-    public void updateTeam(int Id, int point) {
-        Team team1 = new Team(Id,point+3);
-        TeamRepo.updateTeam(team1,point);
+    public void updateTeam(int point , int wins , int faild , int equal,int Id) {
+//        Team team1 = new Team(Id);
+       TeamRepo.updateTeam(point,wins,faild,equal,Id);
 
 }
 
     public void calculateWinner(int homeid, int hometeamgoals , int awayid ,int awayteamgoals ){
-
         if (hometeamgoals > awayteamgoals){
-            updateTeam(homeid, 3);
-        } else if (awayteamgoals > hometeamgoals) {
-            updateTeam(awayid, +3);
-        }else{
-            System.out.println("It's a draw!");
+            updateTeam(3,1,0,0,homeid);
+        } else {
+            updateTeam(0,0,1,0,homeid);
+        } if (awayteamgoals > hometeamgoals) {
+            updateTeam(3,1,0,0,awayid);
+        } else {
+            updateTeam(0,0,1,0,awayid);
+        }if (hometeamgoals == awayteamgoals){
+            updateTeam(1,0,0,1,awayid);
+            updateTeam(1,0,0,1,homeid);
         }
-}
+    }
     }

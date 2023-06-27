@@ -13,6 +13,7 @@ public class MenuService {
     public static void printTeamMenu(){
         System.out.println("\nPress:");
         System.out.println("\t 1. Delete team");
+        System.out.println("\t 2. quit");
     }
     public static void printMatchMenu(){
         System.out.println("\nPress:");
